@@ -1,3 +1,6 @@
-async function a(s){
-    await fetch('dfd')
-}
+import { HeaderComponent } from "./components/header.component";
+import { NavigationComponent } from "./components/navigation.component";
+
+new HeaderComponent('header')
+new NavigationComponent('navigation')
+
