@@ -4,10 +4,16 @@ import { Component } from "../core/componen"
 export class NavigationComponent extends Component {
     constructor(id) {
         super(id)
+
+        this.tabs = []
     }
 
     init() {
         this.$el.addEventListener('click', tabClickHeandler.bind(this))
+    }
+
+    listTabs(tabs){
+        this.tabs = tabs
     }
 }
 
@@ -19,5 +25,9 @@ function tabClickHeandler(event) {
             tab.classList.remove('active')
         })
         event.target.classList.add('active')
+
+        const showTabs = this.tabs.find(tab => tab.name === event.target.dataset.name)
+        this.tabs.forEach(tab => tab.component.hide())
+        showTabs.component.show()
     }
 } 
